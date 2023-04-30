@@ -90,22 +90,36 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'c5-%u0l1*(dj@u33!5*o_gtti0)kkh$m%i#@!(!$d%
 TEMPLATE_LOADERS = (
 	'django.template.loaders.filesystem.Loader',
 	'django.template.loaders.app_directories.Loader',
+	'django.template.backends.django.DjangoTemplates',
 #	 'django.template.loaders.eggs.Loader',
 )
-
+TEMPLATES = [
+	{
+		'APP_DIRS': True,
+		"BACKEND": 'django.template.backends.django.DjangoTemplates',
+		"OPTIONS": {
+			"context_processors": [
+				'django.contrib.auth.context_processors.auth',
+				'django.contrib.messages.context_processors.messages'
+			]
+		}
+	}
+]
 MIDDLEWARE_CLASSES = (
 	'django.middleware.common.CommonMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
 	# Uncomment the next line for simple clickjacking protection:
 	# 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 MIDDLEWARE = (
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.contrib.messages.middleware.MessageMiddleware',
 	'django_prometheus.middleware.PrometheusBeforeMiddleware',
 	'django_prometheus.middleware.PrometheusAfterMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware'
 )
 
 ROOT_URLCONF = 'charting_library_charts.urls'
@@ -122,14 +136,14 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
 	'django.contrib.auth',
 	'django.contrib.contenttypes',
-	#'django.contrib.sessions',
-	#'django.contrib.sites',
-	#'django.contrib.messages',
-	#'django.contrib.staticfiles',
+	'django.contrib.sessions',
+	# 'django.contrib.sites',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
 	# Uncomment the next line to enable the admin:
-	# 'django.contrib.admin',
+	'django.contrib.admin',
 	# Uncomment the next line to enable admin documentation:
-	# 'django.contrib.admindocs',
+	'django.contrib.admindocs',
 	'model',
 	'django_prometheus',
 )
