@@ -1,0 +1,18 @@
+Charting Library Save/Load Backend
+================
+
+This is the tiny backend implementing Charting Library charts storage.
+
+## Requirements
+Python 3x, pip, Django, Djongo
+
+## How to start
+
+1. Install Python 3.x and Pip. Use virtual environment if your host has older python version and it cant be upgraded.
+2. Install and initialize mongodb service.
+3. Go to your charts storage folder and run `pip install -r requirements.txt`.
+4. Add client.host url from env like at the (connector instructions)[https://github.com/doableware/djongo]
+5. Run `python manage.py migrate`. This will create database schema without any data.
+6. Generate a secret key by running `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`
+7. Set your secret key to your environment variables `export SECRET_KEY='...'`
+8. Run `python manage.py runserver` to run *TEST* instance of your database. Use some other stuff (i.e., Gunicorn) for your production environment.
