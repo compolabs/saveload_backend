@@ -19,7 +19,7 @@ DATABASES = {
 		'NAME': os.getenv('DB_USER_NAME','test'),
 		'ENFORCE_SCHEMA': False,
 		'CLIENT': {
-			'host': os.getenv('DB_HOST_NAME', 'mongodb:localhost'),
+			'host': os.getenv('DB_HOST_NAME', 'mongodb://localhost'),
 			'port': os.getenv('DB_PORT', 27017),
 		}
 	}
