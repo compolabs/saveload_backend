@@ -5,8 +5,6 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['*']
-
 ADMINS = (
 	# ('Your Name', 'your_email@example.com'),
 )
@@ -19,7 +17,7 @@ DATABASES = {
 		'NAME': os.getenv('DB_USER_NAME','test'),
 		'ENFORCE_SCHEMA': False,
 		'CLIENT': {
-			'host': os.getenv('DB_HOST_NAME', 'mongodb://localhost'),
+			'host': os.getenv('DB_HOST_NAME', 'mongodb://127.0.0.1'),
 			'port': os.getenv('DB_PORT', 27017),
 		}
 	}
