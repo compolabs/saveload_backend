@@ -24,8 +24,8 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = [
-	'62.109.15.24',
-	'127.0.0.1'
+	'127.0.0.1',
+	'172.26.5.107'
 ]
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
